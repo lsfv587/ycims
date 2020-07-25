@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dataIo.mapper.io_pub_channelMapper">
+    <resultMap id="rs_map" type="com.yc.dataIo.entity.io_pub_channel">
+        <result property="lineCode" column="lineCode" />
+        <result property="subLineCode" column="subLineCode" />
+        <result property="channelCode" column="channelCode" />
+        <result property="channelName" column="channelName" />
+        <result property="channelType" column="channelType" />
+        <result property="carCode" column="carCode" />
+        <result property="mcsDownNo" column="mcsDownNo" />
+        <result property="isDynamic" column="isDynamic" />
+        <result property="tagaddr" column="tagaddr" />
+        <result property="tagid" column="tagid" />
+        <result property="maxWidth" column="maxWidth" />
+        <result property="maxLength" column="maxLength" />
+        <result property="maxHeight" column="maxHeight" />
+        <result property="minWidth" column="minWidth" />
+        <result property="minLength" column="minLength" />
+        <result property="minHeight" column="minHeight" />
+        <result property="state" column="state" />
+        <result property="safeStockQty" column="safeStockQty" />
+    </resultMap>
+
+    <select id="findAll" resultMap="rs_map">
+        select c.sublinecode,c.channelcode,c.channelName,c.mcsdownno,
+               c.isdynamic,c.maxwidth,c.maxheight,c.maxlength,c.minwidth,c.minheight,
+               c.minlength,c.state,c.safeStockQty, 1 as linecode
+        from pub_channel c order by c.channelcode
+    </select>
+</mapper>

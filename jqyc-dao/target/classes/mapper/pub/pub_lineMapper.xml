@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.pub.pub_lineMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.pub.pub_line">
+            <id property="id" column="id"/>
+            <result property="lineCode" column="lineCode" />
+            <result property="lineName" column="lineName" />
+            <result property="stockModel" column="stockModel" />
+    </resultMap>
+
+    <select id="getLineByLineCode" resultMap="rs_map">
+        select pl.id,pl.linecode,pl.linename,pl.stockModel
+        from pub_line pl
+        WHERE pl.linecode = #{lineCode}
+    </select>
+</mapper>

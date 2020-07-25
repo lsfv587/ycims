@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.op.op_channelMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.op.op_channel">
+        <id property="id" column="id"/>
+        <result property="batchId" column="batchId" />
+        <result property="channelCode" column="channelCode" />
+        <result property="channelType" column="channelType" />
+        <result property="maxWidth" column="maxWidth" />
+        <result property="maxLength" column="maxLength" />
+        <result property="maxHeight" column="maxHeight" />
+        <result property="minWidth" column="minWidth" />
+        <result property="minLength" column="minLength" />
+        <result property="minHeight" column="minHeight" />
+        <result property="lineCode" column="lineCode" />
+        <result property="subLineCode" column="subLineCode" />
+        <result property="stockModel" column="stockModel" />
+        <result property="stockQty" column="stockQty" />
+        <result property="qty" column="qty" />
+        <result property="totalQty" column="totalQty" />
+    </resultMap>
+
+    <select id="getChannels" resultMap="rs_map">
+        SELECT c.channelcode,c.channeltype,c.maxwidth,c.maxheight,maxlength,b.id as batchid,
+               c.minwidth,c.minheight,c.minlength,c.linecode,c.sublinecode,c.stockModel
+        FROM pub_channel c
+        INNER JOIN op_batch b ON c.linecode = b.linecode
+        WHERE b.linecode = #{lineCode}
+    </select>
+    <select id="getOpChannels" resultMap="rs_map">
+        SELECT oc.id,oc.batchid,oc.channelcode,oc.productcode,oc.sublinecode,oc.stockqty,
+        oc.qty,oc.linecode,(oc.stockqty + oc.qty) AS totalQty,pc.channelType
+        FROM op_channel oc
+        INNER JOIN pub_channel pc ON oc.channelcode = pc.channelcode
+        WHERE oc.linecode = #{lineCode}
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into op_channel
+        (id,batchid,channelcode,productcode,linecode,sublinecode,qty,stockqty) values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.batchId},#{item.channelCode},#{item.productCode},
+            #{item.lineCode},#{item.subLineCode},#{item.qty},#{item.stockQty})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from op_channel where linecode = #{lineCode}
+    </delete>
+</mapper>

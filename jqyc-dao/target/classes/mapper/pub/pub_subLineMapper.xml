@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.pub.pub_subLineMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.pub.pub_subLine">
+        <id property="id" column="id"/>
+        <result property="subLineCode" column="subLineCode" />
+        <result property="subLineName" column="subLineName" />
+        <result property="maxCacheNum" column="maxCacheNum" />
+        <association property="line" javaType="com.yc.dao.entity.pub.pub_line">
+            <id property="id" column="id"/>
+            <result property="lineCode" column="lineCode" />
+            <result property="lineName" column="lineName" />
+            <result property="stockModel" column="stockModel" />
+        </association>
+    </resultMap>
+
+    <select id="getSubLines" resultMap="rs_map">
+        SELECT ps.id,ps.sublinecode,ps.sublinename,ps.maxcachenum,
+               pl.linecode,pl.linename,pl.stockModel
+        FROM pub_subline ps
+        INNER JOIN pub_line pl ON ps.linecode = pl.linecode
+        WHERE pl.linecode = #{lineCode}
+    </select>
+</mapper>

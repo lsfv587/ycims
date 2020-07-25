@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.dl.dl_custMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.dl.dl_cust">
+        <id property="id" column="id"/>
+        <result property="custCode" column="custCode" />
+        <result property="custName" column="custName" />
+        <result property="custSequence" column="custSequence" />
+        <result property="pathCode" column="pathCode" />
+        <result property="licenseCode" column="licenseCode" />
+        <result property="address" column="address" />
+        <result property="phone" column="phone" />
+        <result property="manager" column="manager" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+
+    <insert id="addList" parameterType="List">
+        insert into dl_cust
+        (id,custcode,custname,custsequence,pathcode,licensecode,address,phone,manager,linecode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.custCode},#{item.custName},#{item.custSequence},#{item.pathCode},
+            #{item.licenseCode},#{item.address},#{item.phone},#{item.manager},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from dl_cust where linecode = #{lineCode}
+    </delete>
+</mapper>

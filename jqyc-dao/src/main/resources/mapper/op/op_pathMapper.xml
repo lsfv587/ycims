@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.op.op_pathMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.op.op_path">
+        <result property="areaCode" column="areaCode" />
+        <result property="batchId" column="batchId" />
+        <result property="pathCode" column="pathCode" />
+        <result property="pathName" column="pathName" />
+        <result property="pathSequence" column="pathSequence" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+    <select id="getChosePath" resultMap="rs_map">
+        SELECT id,pathcode,areacode,pathname,pathsequence,linecode,#{batchId} as batchid
+        FROM dl_path
+        WHERE issort = 1 AND linecode = #{lineCode}
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into op_path
+        (id,areacode,batchid,pathcode,pathname,pathsequence,linecode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.areaCode},#{item.batchId},#{item.pathCode},
+            #{item.pathName},#{item.pathSequence},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from op_path where linecode = #{lineCode}
+    </delete>
+</mapper>

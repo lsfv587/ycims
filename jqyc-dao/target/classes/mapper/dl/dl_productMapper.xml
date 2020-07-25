@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.dl.dl_productMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.dl.dl_product">
+        <id property="id" column="id"/>
+        <result property="productCode" column="productCode" />
+        <result property="productName" column="productName" />
+        <result property="isAbnor" column="isAbnor" />
+        <result property="isOverseas" column="isOverseas" />
+        <result property="barCode" column="barCode" />
+        <result property="jbarCode" column="jbarCode" />
+        <result property="qty" column="qty" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+
+    <select id="getProducts" resultMap="rs_map">
+        SELECT o.productcode,SUM(o.qty) AS qty
+        FROM dl_order o
+        GROUP BY o.productcode
+        ORDER BY qty DESC
+    </select>
+    
+    <insert id="addList" parameterType="List">
+        insert into dl_product
+        (id,productcode,productname,isabnor,isoverseas,barcode,jbarcode,lineCode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.productCode},#{item.productName},#{item.isAbnor},
+            #{item.isOverseas},#{item.barCode},#{item.jbarCode},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from dl_product where linecode = #{lineCode}
+    </delete>
+</mapper>

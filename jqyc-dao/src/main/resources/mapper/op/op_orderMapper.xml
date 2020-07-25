@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.op.op_orderMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.op.op_order">
+        <id property="id" column="id"/>
+        <result property="orderDate" column="orderDate" />
+        <result property="batchId" column="batchId" />
+        <result property="orderCode" column="orderCode" />
+        <result property="custCode" column="custCode" />
+        <result property="pathCode" column="pathCode" />
+        <result property="productCode" column="productCode" />
+        <result property="qty" column="qty" />
+        <result property="lineCode" column="lineCode" />
+        <result property="subLineQty" column="subLineQty" />
+        <result property="subLineCode" column="subLineCode" />
+    </resultMap>
+    <resultMap id="rs_orderChanel" type="com.yc.dao.entity.op.op_orderChannel">
+        <id property="id" column="id"/>
+        <result property="orderId" column="orderId" />
+        <result property="channelCode" column="channelCode" />
+        <result property="productCode" column="productCode" />
+        <result property="channelQty" column="channelQty" />
+        <result property="subLineCode" column="subLineCode" />
+        <result property="orderCode" column="orderCode" />
+    </resultMap>
+    <select id="getChoseOrders" resultMap="rs_map">
+        SELECT o.id,o.orderdate,o.ordercode,o.custcode,o.pathcode,o.productcode,
+        o.qty,o.linecode,#{batchId} as batchid
+        FROM dl_order o
+        INNER JOIN dl_cust dc ON o.custcode = dc.custcode
+        INNER JOIN dl_path dp ON dc.pathcode = dp.pathcode
+        WHERE dc.issort = 1 AND dp.issort = 1 AND o.linecode = #{lineCode}
+    </select>
+    <select id="getOrders" resultMap="rs_map">
+      SELECT id,ordercode,orderdate,batchid,custcode,pathcode,productcode,qty,linecode
+      FROM op_order
+      WHERE linecode = #{lineCode}
+    </select>
+    <select id="getOrderMas" resultMap="rs_map">
+        SELECT o.batchid,o.orderdate,o.ordercode,o.custcode,o.pathcode,oc.sublinecode,
+        SUM(qty) AS sublineqty
+        FROM op_order o
+        INNER JOIN op_orderChannel oc ON o.id = oc.orderid
+        INNER JOIN op_cust c ON c.custcode = o.custcode AND c.linecode = o.linecode
+        INNER JOIN op_path p ON c.pathcode = p.pathcode AND o.pathcode = p.pathcode AND p.linecode = o.linecode
+        WHERE o.linecode = #{lineCode}
+        GROUP BY  o.batchid,o.orderdate,o.ordercode,o.custcode,o.pathcode,oc.sublinecode
+        ORDER BY p.pathsequence,c.custsequence
+    </select>
+    <select id="getOrderDets" resultMap="rs_orderChanel">
+        SELECT oc.orderid,oc.channelcode,o.productcode,oc.channelqty,o.orderCode,oc.sublinecode
+        FROM op_orderChannel oc
+        INNER JOIN op_order o ON o.id = oc.orderid
+        WHERE o.linecode = #{lineCode}
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into op_order
+        (id,orderdate,batchid,ordercode,custcode,pathcode,productcode,qty,linecode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.orderDate},#{item.batchId},#{item.orderCode},
+            #{item.custCode},#{item.pathCode},#{item.productCode},#{item.qty},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from op_order where linecode = #{lineCode}
+    </delete>
+    <insert id="addOrderChannels" parameterType="List">
+        insert into op_orderChannel
+        (id,orderid,channelcode,channelqty,sublinecode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.orderId},#{item.channelCode},
+            #{item.channelQty},#{item.subLineCode})
+        </foreach>
+    </insert>
+    <delete id="deleteOrderChannel">
+        DELETE FROM op_orderChannel
+        WHERE orderid IN (
+          SELECT id FROM op_order WHERE linecode = #{lineCode}
+          )
+    </delete>
+</mapper>

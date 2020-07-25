@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.dl.dl_areaMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.dl.dl_area">
+        <id property="id" column="id"/>
+        <result property="areaCode" column="areaCode" />
+        <result property="areaName" column="areaName" />
+        <result property="areaSequence" column="areaSequence" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+
+    <select id="findAll" resultMap="rs_map">
+        select c.areaCode,c.areaName,c.areaSequence,c.linecode
+        from dl_area c
+    </select>
+
+    <insert id="addList" parameterType="List">
+        insert into dl_area
+        (id,areacode,areaname,areasequence,linecode) values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.areaCode},#{item.areaName},
+            #{item.areaSequence},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from dl_area where linecode = #{lineCode}
+    </delete>
+</mapper>

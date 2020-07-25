@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dataIo.mapper.io_pathMapper">
+    <resultMap id="rs_map" type="com.yc.dataIo.entity.io_path">
+        <result property="pathCode" column="pathCode" />
+        <result property="pathName" column="pathName" />
+        <result property="pathSequence" column="pathSequence" />
+        <result property="areaCode" column="areaCode" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+
+    <select id="findAll" resultMap="rs_map">
+        select c.pathCode,c.pathName,c.pathSequence,c.areaCode,1 as linecode
+        from dl_path c
+    </select>
+</mapper>

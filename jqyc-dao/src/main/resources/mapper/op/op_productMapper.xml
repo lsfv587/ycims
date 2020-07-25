@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.op.op_productMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.op.op_product">
+        <id property="id" column="id"/>
+        <result property="batchId" column="batchId" />
+        <result property="lineCode" column="lineCode" />
+        <result property="productName" column="productName" />
+        <result property="productCode" column="productCode" />
+        <result property="productHeight" column="productHeight" />
+        <result property="productLength" column="productLength" />
+        <result property="productWidth" column="productWidth" />
+        <result property="jqty" column="jqty" />
+        <result property="barCode" column="barCode" />
+        <result property="jbarCode" column="jbarCode" />
+        <result property="isOverseas" column="isOverseas" />
+        <result property="isAbnor" column="isAbnor" />
+    </resultMap>
+
+    <select id="getProducts" resultMap="rs_map">
+        SELECT p.productcode,p.producttype,p.productwidth,p.productheight,p.productlength,
+               p.isabnor,p.jqty,t.qty
+        FROM(
+            SELECT productcode,SUM(qty) AS qty
+            FROM op_order
+            GROUP BY productcode)t
+        INNER JOIN pub_product p ON t.productcode = p.productcode
+        ORDER BY t.qty DESC
+    </select>
+    <select id="getChoseProducts" resultMap="rs_map">
+       SELECT dp.id,dp.productcode,dp.productname,dp.productwidth,dp.productlength,
+        dp.productheight,dp.isabnor,dp.isoverseas,dp.barcode,dp.jbarcode,dp.linecode,
+        #{batchId} AS batchid
+        FROM dl_product dp
+        WHERE EXISTS (
+            SELECT 1 FROM(
+                SELECT o.productcode
+                FROM dl_order o
+                INNER JOIN dl_cust dc ON o.custcode = dc.custcode
+                INNER JOIN dl_path dp ON dc.pathcode = dp.pathcode
+                WHERE dp.issort = 1 AND dc.issort = 1
+                GROUP BY o.productcode
+            )t WHERE t.productcode = dp.productcode
+        ) AND dp.linecode = #{lineCode}
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into op_product
+
+        (id,batchid,productcode,linecode,productname,productwidth,productheight,
+        productlength,isabnor,isoverseas,barcode,jbarcode,jqty)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.batchId},#{item.productCode},#{item.lineCode},
+            #{item.productName},#{item.productWidth},#{item.productHeight},
+            #{item.productLength},#{item.isAbnor},#{item.isOverseas},#{item.barCode},
+            #{item.jbarCode},#{item.jqty})
+        </foreach>
+
+    </insert>
+    <delete id="delete">
+        delete from op_product where linecode = #{lineCode}
+    </delete>
+</mapper>

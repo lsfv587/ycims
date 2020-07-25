@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dataIo.mapper.io_productMapper">
+    <resultMap id="rs_map" type="com.yc.dataIo.entity.io_product">
+        <result property="productCode" column="productCode" />
+        <result property="productName" column="productName" />
+        <result property="buyPrice" column="buyPrice" />
+        <result property="costPrice" column="costPrice" />
+        <result property="tradePrice" column="tradePrice" />
+        <result property="retailPrice" column="retailPrice" />
+        <result property="barCode" column="barCode" />
+        <result property="jbarCode" column="jbarCode" />
+        <result property="isAbnor" column="isAbnor" />
+        <result property="isOverseas" column="isOverseas" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+
+    <select id="findAll" resultMap="rs_map">
+        select c.productCode,c.productname,c.buyprice,c.costprice,
+               c.tradeprice,c.retailprice,c.barcode,c.jbarcode,c.isabnor,
+               c.isoverseas,1 as linecode
+        from dl_product c
+    </select>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.pub.pub_batchMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.pub.pub_batch">
+        <id property="id" column="id"/>
+        <result property="batchCode" column="batchCode" />
+        <result property="batchName" column="batchName" />
+        <result property="batchSequence" column="batchSequence" />
+        <result property="type" column="type" />
+    </resultMap>
+
+    <select id="getMinBatch" resultMap="rs_map">
+        SELECT b.id,b.batchCode,b.batchname,b.batchsequence,b.type
+        FROM pub_batch b
+        WHERE b.batchsequence > #{batchSequence} AND b.type = #{type}
+        ORDER BY b.batchsequence DESC LIMIT 1
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into pub_batch
+        (id,batchCode,batchname,batchsequence,type)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.batchCode},#{item.batchName},#{item.batchSequence},#{item.type})
+        </foreach>
+    </insert>
+</mapper>

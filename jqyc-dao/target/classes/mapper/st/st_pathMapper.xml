@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.st.st_pathMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.st.st_path">
+        <id property="id" column="id"/>
+        <result property="pathCode" column="pathCode" />
+        <result property="pathName" column="pathName" />
+        <result property="pathSequence" column="pathSequence" />
+        <result property="qty" column="qty" />
+        <result property="batchId" column="batchId" />
+    </resultMap>
+
+    <select id="findStPath" resultMap="rs_map">
+        SELECT REPLACE(UUID(),'-','') AS id,pathcode,pathname,pathsequence,batchid
+        FROM op_path
+        WHERE linecode = #{lineCode}
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into st_path
+        (id,pathcode,pathname,pathsequence,qty,batchId)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.pathCode},#{item.pathName},#{item.pathSequence},
+            #{item.qty},#{item.batchId})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from st_path where batchId = #{batchId}
+    </delete>
+</mapper>

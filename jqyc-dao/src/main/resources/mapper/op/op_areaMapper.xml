@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.op.op_areaMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.op.op_area">
+        <id property="id" column="id"/>
+        <result property="areaCode" column="areaCode" />
+        <result property="batchId" column="batchId" />
+        <result property="areaName" column="areaName" />
+        <result property="areaSequence" column="areaSequence" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+    <select id="getChoseArea" resultMap="rs_map">
+        SELECT id,areacode,areaname,areasequence,linecode,#{batchId} as batchid
+        FROM dl_area
+        WHERE linecode = #{lineCode}
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into op_area
+        (id,areacode,batchid,areaname,areasequence,linecode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.areaCode},#{item.batchId},#{item.areaName},#{item.areaSequence},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from op_area where linecode = #{lineCode}
+    </delete>
+</mapper>

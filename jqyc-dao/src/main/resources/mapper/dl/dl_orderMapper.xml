@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.dl.dl_orderMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.dl.dl_order">
+        <id property="id" column="id"/>
+        <result property="orderCode" column="custCode" />
+        <result property="orderDate" column="custName" />
+        <result property="custCode" column="custSequence" />
+        <result property="pathCode" column="pathCode" />
+        <result property="productCode" column="licenseCode" />
+        <result property="qty" column="address" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+    <select id="getOrderDate" resultType="String">
+        SELECT orderdate FROM dl_order
+        WHERE linecode = #{lineCode}
+        GROUP BY orderdate
+    </select>
+    <select id="getDlOrders" resultMap="rs_map">
+        SELECT o.ordercode,o.orderdate,o.custcode,o.pathcode,o.productcode,o.qty,o.linecode
+        FROM dl_order o
+        INNER JOIN dl_cust c ON o.custcode = c.custcode
+        INNER JOIN dl_path p ON o.pathcode = p.pathcode
+        WHERE o.orderDate = #{orderDate}
+        ORDER BY p.pathsequence,c.custsequence
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into dl_order
+        (id,ordercode,orderdate,custcode,pathcode,productcode,qty,linecode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.orderCode},#{item.orderDate},#{item.custCode},#{item.pathCode},
+            #{item.productCode},#{item.qty},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from dl_order where lineCode = #{lineCode}
+    </delete>
+</mapper>

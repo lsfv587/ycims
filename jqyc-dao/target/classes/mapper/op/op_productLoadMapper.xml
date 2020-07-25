@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.op.op_productLoadMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.op.op_productLoad">
+        <id property="id" column="id"/>
+        <result property="batchId" column="batchId" />
+        <result property="lineCode" column="lineCode" />
+        <result property="productCode" column="productCode" />
+        <result property="productHeight" column="productHeight" />
+        <result property="productLength" column="productLength" />
+        <result property="productWidth" column="productWidth" />
+        <result property="productType" column="productType" />
+        <result property="jqty" column="jqty" />
+        <result property="qty" column="qty" />
+        <result property="opQty" column="qty" />
+        <result property="isAbnor" column="isAbnor" />
+    </resultMap>
+
+    <select id="getProducts" resultMap="rs_map">
+        SELECT p.productcode,p.producttype,p.productwidth,p.productheight,p.productlength,
+               p.isabnor,p.jqty,t.qty,t.batchid,t.linecode
+         FROM
+        (
+            SELECT productcode,SUM(qty) AS qty,batchid,linecode
+            FROM op_order
+            WHERE linecode = #{lineCode}
+            GROUP BY productcode
+        )t INNER JOIN pub_product p ON t.productcode = p.productcode
+        ORDER BY t.qty DESC
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into op_productload
+        (id,productcode,batchid,qty,prepareqty,linecode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.productCode},#{item.batchId},#{item.qty},
+            #{item.prepareQty},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from op_productload where linecode = #{lineCode}
+    </delete>
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.op.op_batchMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.op.op_batch">
+        <id property="id" column="id"/>
+        <result property="lineCode" column="lineCode" />
+        <result property="orderDate" column="orderDate" />
+        <result property="pickDate" column="pickDate" />
+        <result property="batchCode" column="batchCode" />
+        <result property="batchSequence" column="batchSequence" />
+        <result property="qty" column="qty" />
+        <result property="custNum" column="custNum" />
+        <result property="custAvgQty" column="custAvgQty" />
+    </resultMap>
+    <select id="getMaxBatchNo" resultMap="rs_map">
+        SELECT b.id,b.orderdate,b.pickdate,b.batchCode,b.linecode,b.batchsequence
+        FROM op_batch b
+        WHERE b.orderdate = #{orderDate} AND linecode = #{lineCode}
+        ORDER BY b.batchsequence  DESC
+        LIMIT 1
+    </select>
+    <select id="getBatchByLineCode" resultMap="rs_map">
+        SELECT id,orderdate,pickdate,batchcode,linecode,batchsequence
+        FROM op_batch WHERE linecode = #{lineCode}
+    </select>
+    <insert id="add">
+        insert into op_batch
+        (id,linecode,orderdate,pickdate,batchCode,batchsequence,
+        qty,custnum,custavgqty)
+        values
+        (#{id},#{lineCode},#{orderDate},#{pickDate},#{batchCode},#{batchSequence},
+        #{qty},#{custNum},#{custAvgQty})
+    </insert>
+    <delete id="delete">
+        delete from op_batch where linecode = #{lineCode}
+    </delete>
+</mapper>

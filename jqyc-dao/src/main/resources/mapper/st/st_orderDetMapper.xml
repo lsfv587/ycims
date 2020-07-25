@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.st.st_orderDetMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.st.st_orderDet">
+        <id property="id" column="id"/>
+        <result property="channelCode" column="channelCode" />
+        <result property="productCode" column="productCode" />
+        <result property="qty" column="qty" />
+        <result property="orderMasId" column="orderMasId" />
+    </resultMap>
+
+    <insert id="addList" parameterType="List">
+        insert into st_orderDet
+        (id,channelCode,productCode,qty,orderMasId)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.channelCode},#{item.productCode},#{item.qty},#{item.orderMasId})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from st_orderDet
+        where ordermasid in(
+            select id from st_orderMas where batchId = #{batchId}
+        )
+    </delete>
+</mapper>

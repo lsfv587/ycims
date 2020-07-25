@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dataIo.mapper.io_orderMapper">
+    <resultMap id="rs_map" type="com.yc.dataIo.entity.io_order">
+        <result property="orderDate" column="orderDate" />
+        <result property="orderCode" column="orderCode" />
+        <result property="batchCode" column="batchCode" />
+        <result property="custCode" column="custCode" />
+        <result property="pathCode" column="pathCode" />
+        <result property="productCode" column="productCode" />
+        <result property="qty" column="qty" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+
+    <select id="findAll" resultMap="rs_map">
+        select c.ordercode,c.orderdate,c.custcode,c.pathcode,1 as linecode,
+               c.productcode,c.qty
+        from dl_order c
+    </select>
+</mapper>

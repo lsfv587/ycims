@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.st.st_orderMasMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.st.st_orderMas">
+        <id property="id" column="id"/>
+        <result property="orderCode" column="orderCode" />
+        <result property="serialNo" column="serialNo" />
+        <result property="subLineCode" column="subLineCode" />
+        <result property="subLineQty" column="subLineQty" />
+        <result property="totalQty" column="totalQty" />
+        <result property="exportNo" column="exportNo" />
+        <result property="state" column="state" />
+        <result property="sortTm" column="sortTm" />
+        <result property="custCode" column="custCode" />
+        <result property="batchId" column="batchId" />
+    </resultMap>
+
+    <insert id="addList" parameterType="List">
+        insert into st_orderMas
+        (id,orderCode,serialNo,subLineCode,subLineQty,totalQty,exportNo,custCode,batchId)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.orderCode},#{item.serialNo},#{item.subLineCode},#{item.subLineQty},
+            #{item.totalQty},#{item.exportNo},#{item.custCode},#{item.batchId})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from st_orderMas where batchId = #{batchId}
+    </delete>
+</mapper>

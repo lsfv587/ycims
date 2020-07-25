@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dataIo.mapper.io_pub_channelBindMapper">
+    <resultMap id="rs_map" type="com.yc.dataIo.entity.io_pub_channelBind">
+        <result property="productCode" column="productCode" />
+        <result property="channelCode" column="channelCode" />
+        <result property="priority" column="priority" />
+    </resultMap>
+
+    <select id="findAll" resultMap="rs_map">
+        select b.channelcode,b.productcode,b.priority
+        from pub_bindlineproduct b
+    </select>
+</mapper>

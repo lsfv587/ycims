@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.pub.pub_channelBindMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.pub.pub_channelBind">
+        <id property="id" column="id"/>
+        <result property="channelCode" column="channelCode" />
+        <result property="priority" column="priority" />
+        <result property="productCode" column="productCode" />
+    </resultMap>
+
+    <select id="getChannelBinds" resultMap="rs_map">
+        SELECT pb.id,pb.channelcode,pb.productcode,pb.priority
+        FROM pub_channelbind pb
+        INNER JOIN pub_channel c ON pb.channelcode = c.channelcode
+        INNER JOIN pub_subline s ON s.id = c.sublineid
+        INNER JOIN pub_line l ON l.id = s.lineid
+        WHERE l.linecode = #{lineCode}
+    </select>
+
+    <insert id="addList" parameterType="List">
+        insert into pub_channelbind
+        (id,channelcode,productcode,priority) values
+        <foreach collection="list" item="item" separator=",">
+            (REPLACE(UUID(),'-',''),#{item.channelCode},#{item.productCode},#{item.priority})
+        </foreach>
+    </insert>
+</mapper>

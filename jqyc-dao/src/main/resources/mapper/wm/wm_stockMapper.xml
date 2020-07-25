@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.wm.wm_stockMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.wm.wm_stock">
+        <id property="id" column="id"/>
+        <result property="stockCode" column="stockCode" />
+        <result property="productCode" column="productCode" />
+        <result property="qty" column="qty" />
+    </resultMap>
+
+    <select id="getProductStocks" resultMap="rs_map">
+        SELECT s.id,s.stockcode,s.productcode,s.qty
+        FROM wm_stock s
+        INNER JOIN pub_channel c  ON c.channelcode = s.stockcode
+        INNER JOIN pub_subline ps ON ps.id = c.sublineid
+        INNER JOIN pub_line l ON l.id = ps.lineid
+        WHERE s.qty > 0 AND l.linecode = #{lineCode}
+    </select>
+    <select id="getChannelStocks" resultMap="rs_map">
+        SELECT s.id,s.stockcode,s.productcode,s.qty
+        FROM pub_channel c
+        INNER JOIN wm_stock s ON c.channelcode = s.stockcode
+        INNER JOIN pub_subline ps ON ps.id = c.sublineid
+        INNER JOIN pub_line l ON l.id = ps.lineid
+        WHERE s.qty >0 AND c.stockModel = 1 AND l.linecode = #{lineCode}
+    </select>
+
+</mapper>

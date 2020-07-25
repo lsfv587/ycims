@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5a2349da-c5d2-4000-8a6b-f617692125c6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\java\maven\repository" />
+        <option name="mavenHome" value="D:/apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1eeyX0j8yP0rNL30zr9QQ5udfaS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/jqyc-dao/src/main/resources/mapper/st" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\03idea_work_space\jqyc\jqyc-dao\src\main\resources\mapper" />
+      <recent name="E:\03idea_work_space\jqyc\jqyc-dao\src\main\resources\mapper\pub" />
+      <recent name="E:\03idea_work_space\jqyc\jqyc-data-io\src\main\resources\mappers_dev\dataio" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yc.dao.mapper.pub" />
+      <recent name="com.yc.dataSource" />
+      <recent name="com.yc.controller" />
+      <recent name="com.yc.mapper" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\03idea_work_space\jqyc\jqyc-dao\src\main\resources\mapper\st" />
+      <recent name="E:\03idea_work_space\jqyc\jqyc-dao\src\main\resources\mapper\op" />
+      <recent name="E:\03idea_work_space\jqyc\jqyc-data-io\src\main\resources\mappers_dev\dataio" />
+      <recent name="E:\03idea_work_space\jqyc\jqyc-dao\src\main\resources\mapper\pub" />
+      <recent name="E:\03idea_work_space\jqyc\jqyc-dao\src\main\resources\mapper\dl\op" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.pub_bindProductMapperTest.getList">
+    <configuration name="optimizationServiceTest.distributeChannel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jqyc-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.service.optimization.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yc.service.optimization" />
+      <option name="MAIN_CLASS_NAME" value="com.yc.service.optimization.optimizationServiceTest" />
+      <option name="METHOD_NAME" value="distributeChannel" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="optimizationServiceTest.optimization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jqyc-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.service.optimization.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yc.service.optimization" />
+      <option name="MAIN_CLASS_NAME" value="com.yc.service.optimization.optimizationServiceTest" />
+      <option name="METHOD_NAME" value="optimization" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="optimizationServiceTest.relateOrderChannel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jqyc-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.service.optimization.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yc.service.optimization" />
+      <option name="MAIN_CLASS_NAME" value="com.yc.service.optimization.optimizationServiceTest" />
+      <option name="METHOD_NAME" value="relateOrderChannel" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="optimizationServiceTest.splitOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jqyc-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.service.optimization.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yc.service.optimization" />
+      <option name="MAIN_CLASS_NAME" value="com.yc.service.optimization.optimizationServiceTest" />
+      <option name="METHOD_NAME" value="splitOrder" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pub_bindProductMapperTest.getList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jqyc-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.dao.mapper.op.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yc.dao.mapper.op" />
+      <option name="MAIN_CLASS_NAME" value="com.yc.dao.mapper.op.pub_bindProductMapperTest" />
+      <option name="METHOD_NAME" value="getList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="jqycWebMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="jqyc-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.jqycWebMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.pub_bindProductMapperTest.getList" />
+        <item itemvalue="JUnit.optimizationServiceTest.optimization" />
+        <item itemvalue="JUnit.optimizationServiceTest.splitOrder" />
+        <item itemvalue="JUnit.optimizationServiceTest.relateOrderChannel" />
+        <item itemvalue="JUnit.optimizationServiceTest.distributeChannel" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpringBootOptions">
+    <option name="showAdditionalConfigNotification" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a2349da-c5d2-4000-8a6b-f617692125c6" name="Default Changelist" comment="" />
+      <created>1594696388186</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594696388186</updated>
+      <workItem from="1594696390905" duration="17713000" />
+      <workItem from="1594772866422" duration="6883000" />
+      <workItem from="1594779887588" duration="22999000" />
+      <workItem from="1594859309102" duration="28687000" />
+      <workItem from="1594945390253" duration="27791000" />
+      <workItem from="1595031723736" duration="14190000" />
+      <workItem from="1595204983526" duration="19461000" />
+      <workItem from="1595227323035" duration="8310000" />
+      <workItem from="1595291547358" duration="21672000" />
+      <workItem from="1595377467407" duration="27838000" />
+      <workItem from="1595462798776" duration="20895000" />
+      <workItem from="1595550310894" duration="25759000" />
+      <workItem from="1595637090028" duration="11820000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Project_Structure" timestamp="1594705587728">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1594705587728" />
+    <state x="396" y="42" key="#com.intellij.ide.util.MemberChooser" timestamp="1595402166869">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="396" y="42" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595402166869" />
+    <state x="311" y="266" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594716104407">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="311" y="266" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1594716104407" />
+    <state x="424" y="199" width="431" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594700128974">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="424" y="199" width="431" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1594700128974" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595488281375">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1595488281375" />
+    <state x="372" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1594798944133">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="372" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1594798944133" />
+    <state width="475" height="466" key="DebuggerActiveHint" timestamp="1595561398606">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="475" height="466" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1595561398606" />
+    <state width="1237" height="377" key="GridCell.Tab.0.bottom" timestamp="1595648259683">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="377" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595648259683" />
+    <state width="1237" height="377" key="GridCell.Tab.0.center" timestamp="1595648259683">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="377" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595648259683" />
+    <state width="1237" height="377" key="GridCell.Tab.0.left" timestamp="1595648259683">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="377" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595648259683" />
+    <state width="1237" height="377" key="GridCell.Tab.0.right" timestamp="1595648259683">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="377" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595648259683" />
+    <state width="1237" height="262" key="GridCell.Tab.1.bottom" timestamp="1595646685014">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="262" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595646685014" />
+    <state width="1237" height="262" key="GridCell.Tab.1.center" timestamp="1595646685014">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="262" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1595646685014" />
+    <state width="1237" height="262" key="GridCell.Tab.1.left" timestamp="1595646685013">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="262" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1595646685013" />
+    <state width="1237" height="262" key="GridCell.Tab.1.right" timestamp="1595646685014">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="262" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1595646685014" />
+    <state x="228" y="3" key="Registry" timestamp="1594779857968">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="228" y="3" key="Registry/0.0.1280.680@0.0.1280.680" timestamp="1594779857968" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1595648895665">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1595648895665" />
+    <state x="145" y="149" key="extract.method.dialog" timestamp="1595214560406">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="145" y="149" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1595214560406" />
+    <state x="56" y="71" key="new project wizard" timestamp="1594781417746">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="56" y="71" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1594781417746" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1595405350192">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1595405350192" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jqyc-service/src/main/java/com/yc/service/optimization/impl/distributeChannelServiceImpl.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

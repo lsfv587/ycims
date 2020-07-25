@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.op.op_custMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.op.op_cust">
+        <id property="id" column="id"/>
+        <result property="custCode" column="custCode" />
+        <result property="batchId" column="batchId" />
+        <result property="custName" column="custName" />
+        <result property="custSequence" column="custSequence" />
+        <result property="pathCode" column="pathCode" />
+        <result property="manager" column="manager" />
+        <result property="address" column="address" />
+        <result property="licenseCode" column="licenseCode" />
+        <result property="phone" column="phone" />
+        <result property="lineCode" column="lineCode" />
+    </resultMap>
+    <select id="getChoseCust" resultMap="rs_map">
+        SELECT id,custcode,pathcode,custname,manager,address,licensecode,
+               phone,custsequence,linecode,#{batchId} as batchid
+        FROM dl_cust
+        WHERE issort = 1 AND linecode = #{lineCode}
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into op_cust
+        (id,custcode,batchid,pathcode,custname,manager,address,licensecode,
+        phone,custsequence,linecode)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.custCode},#{item.batchId},#{item.pathCode},#{item.custName},
+            #{item.manager},#{item.address},#{item.licenseCode},#{item.phone},
+            #{item.custSequence},#{item.lineCode})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from op_cust where linecode = #{lineCode}
+    </delete>
+</mapper>

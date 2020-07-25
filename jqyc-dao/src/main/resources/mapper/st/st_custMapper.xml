@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.st.st_custMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.st.st_cust">
+        <id property="id" column="id"/>
+        <result property="custCode" column="custCode" />
+        <result property="custName" column="custName" />
+        <result property="custSequence" column="custSequence" />
+        <result property="serialNumber" column="serialNumber" />
+        <result property="address" column="address" />
+        <result property="licenseCode" column="licenseCode" />
+        <result property="phone" column="phone" />
+        <result property="manager" column="manager" />
+        <result property="pathCode" column="pathCode" />
+        <result property="batchId" column="batchId" />
+    </resultMap>
+
+    <select id="findStCust" resultMap="rs_map">
+        SELECT REPLACE(UUID(),'-','') AS id,custcode,batchid,pathcode,custname,manager,
+        address,licensecode,phone,custsequence
+        FROM op_cust
+        WHERE linecode = #{lineCode}
+    </select>
+    <insert id="addList" parameterType="List">
+        insert into st_cust
+        (id,custCode,custName,custSequence,serialNumber,address,licenseCode,
+        phone,manager,pathCode,batchId)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.custCode},#{item.custName},#{item.custSequence},#{item.serialNumber},
+            #{item.address},#{item.licenseCode},#{item.phone},#{item.manager},#{item.pathCode},#{item.batchId})
+        </foreach>
+    </insert>
+    <delete id="delete">
+        delete from st_cust where batchId = #{batchId}
+    </delete>
+</mapper>
