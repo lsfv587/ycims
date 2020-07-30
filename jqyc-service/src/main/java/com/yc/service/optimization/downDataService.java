@@ -11,8 +11,6 @@ import java.util.List;
  * @create: 2020-07-15 15:43
  **/
 public interface downDataService {
-    void downData(Integer lineCode) throws InstantiationException, IllegalAccessException;
-
-    void insertData(Integer lineCode,List<dl_area> areas,List<dl_order> orders,List<dl_cust> custs,
-                    List<dl_path> paths,List<dl_product> products);
+    void downData(String orderDate,Integer lineCode) throws Exception;
+    void insertData(Integer lineCode,List<dl_area> areas,List<dl_order> orders, List<dl_cust> custs, List<dl_path> paths, List<dl_product> products);
 }

@@ -11,23 +11,52 @@ import lombok.Data;
 @Data
 public class ResponseResult {
     private Integer code;
-    private String msg;
+    private String type;
+    private String message;
     private Object data;
+
+    public static ResponseResult success(){
+        ResponseResult result = new ResponseResult();
+        result.setCode(200);
+        result.setType("success");
+        result.setMessage("success");
+        result.setData(null);
+        return result;
+    }
 
     public static ResponseResult success(Object data)
     {
         ResponseResult result = new ResponseResult();
         result.setCode(200);
-        result.setMsg("success");
+        result.setType("success");
+        result.setMessage("success");
         result.setData(data);
         return result;
     }
-
+    public static ResponseResult success(String msg,Object data)
+    {
+        ResponseResult result = new ResponseResult();
+        result.setCode(200);
+        result.setType("success");
+        result.setMessage(msg);
+        result.setData(data);
+        return result;
+    }
     public static ResponseResult fail(String msg)
     {
         ResponseResult result = new ResponseResult();
         result.setCode(404);
-        result.setMsg(msg);
+        result.setType("error");
+        result.setMessage(msg);
+        result.setData(null);
+        return result;
+    }
+    public static ResponseResult fail(Integer code,String msg)
+    {
+        ResponseResult result = new ResponseResult();
+        result.setCode(code);
+        result.setType("error");
+        result.setMessage(msg);
         result.setData(null);
         return result;
     }

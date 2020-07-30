@@ -24,17 +24,17 @@ public class relateOrderChannelServiceImpl implements relateOrderChannelService 
     @Resource
     private op_channelMapper opChannelMapper;
     @Override
-    public void relateOrderChannel(Integer lineCode) {
-        List<op_order> opOrders = opOrderMapper.getOrders(lineCode);
-        List<op_channel> opChannels = opChannelMapper.getOpChannels(lineCode);
-        List<op_orderChannel> orderChannels = new ArrayList<>(opChannels.size());
-        for(op_order o : opOrders)
-        {
-            orderChannels.add(getChannel(opChannels,o));
-        }
-        if(orderChannels.size() == 0)
-            return ;
-        opOrderMapper.addOrderChannels(orderChannels);
+    public void relateOrderChannel(Integer lineCode) throws Exception {
+            List<op_order> opOrders = opOrderMapper.getOrders(lineCode);
+            List<op_channel> opChannels = opChannelMapper.getOpChannels(lineCode);
+            List<op_orderChannel> orderChannels = new ArrayList<>(opChannels.size());
+            for(op_order o : opOrders)
+            {
+                orderChannels.add(getChannel(opChannels,o));
+            }
+            if(orderChannels.size() == 0)
+                throw new Exception("关联订单烟仓失败，原因: 订单烟仓信息为空！") ;
+            opOrderMapper.addOrderChannels(orderChannels);
     }
 
     //

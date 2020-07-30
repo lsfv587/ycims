@@ -17,4 +17,5 @@ public class dl_path {
     private String areaCode;
     private Integer isSort;
     private Integer lineCode;
+    private Integer qty;
 }

@@ -32,5 +32,15 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>yc.ims</groupId>
+            <artifactId>jqyc-vo</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>yc.ims</groupId>
+            <artifactId>jqyc-tool</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>

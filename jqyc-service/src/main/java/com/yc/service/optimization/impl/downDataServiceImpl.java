@@ -43,7 +43,7 @@ public class downDataServiceImpl implements downDataService {
     private io_productMapper io_productMapper;
 
     @Override
-    public void downData(Integer lineCode) throws InstantiationException, IllegalAccessException {
+    public void downData(String orderDate,Integer lineCode) throws Exception {
         //获取接口物流数据
         List<io_area> io_areas = io_areaMapper.findAll();
         //获取订单接口数据
@@ -57,7 +57,7 @@ public class downDataServiceImpl implements downDataService {
         //判断接口是否有数据
         if (io_custs.size() == 0 || io_orders.size() == 0 || io_areas.size() == 0 ||
             io_paths.size() == 0 || io_products.size() == 0){
-            return ;
+            throw new Exception("数据下载失败,接口数据为空！");
         }
         List<dl_area> dl_areas = commonUtils.copyList(io_areas,dl_area.class);
         List<dl_order> dl_orders = commonUtils.copyList(io_orders,dl_order.class);
@@ -67,7 +67,6 @@ public class downDataServiceImpl implements downDataService {
         //将接口数据插入到本地
         insertData(lineCode,dl_areas,dl_orders,dl_custs,dl_paths,dl_products);
     }
-
     @Transactional
     @Override
     public void insertData(Integer lineCode,List<dl_area> areas,List<dl_order> orders, List<dl_cust> custs, List<dl_path> paths, List<dl_product> products) {

@@ -9,6 +9,10 @@
     <file url="file://$PROJECT_DIR$/jqyc-data-io/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jqyc-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jqyc-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jqyc-tool/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jqyc-tool/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jqyc-vo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jqyc-vo/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jqyc-web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jqyc-web/src/main/resources" charset="UTF-8" />
   </component>

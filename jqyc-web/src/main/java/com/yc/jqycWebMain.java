@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  **/
 @SpringBootApplication
 @EnableTransactionManagement
-public class jqycWebMain {
+public class jqycWebMain{
     public static void main(String[] args) {
         SpringApplication.run(jqycWebMain.class,args);
     }

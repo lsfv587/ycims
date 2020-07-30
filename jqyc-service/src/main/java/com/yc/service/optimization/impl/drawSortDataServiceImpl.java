@@ -37,30 +37,30 @@ public class drawSortDataServiceImpl implements drawSortDataService {
     @Resource
     private op_orderMapper opOrderMapper;
     @Override
-    public void drawSortDataOp(Integer lineCode) {
-        //生成订单批次信息
-        op_batch opBatch = createOrderBatch(lineCode);
-        //获取选中的分拣区域信息
-        List<op_area> opAreas = opAreaMapper.getChoseArea(lineCode,opBatch.getId());
-        //获取选中的分拣线路信息
-        List<op_path> opPaths = opPathMapper.getChosePath(lineCode,opBatch.getId());
-        //获取选中的分拣客户信息
-        List<op_cust> opCusts = opCustMapper.getChoseCust(lineCode,opBatch.getId());
-        //获取选中的分拣产品信息
-        List<op_product> opProducts = opProductMapper.getChoseProducts(lineCode,opBatch.getId());
-        //获取选中的分拣订单信息
-        List<op_order> opOrders = opOrderMapper.getChoseOrders(lineCode,opBatch.getId());
+    public void drawSortDataOp(Integer lineCode) throws Exception {
+            //生成订单批次信息
+            op_batch opBatch = createOrderBatch(lineCode);
+            //获取选中的分拣区域信息
+            List<op_area> opAreas = opAreaMapper.getChoseArea(lineCode,opBatch.getId());
+            //获取选中的分拣线路信息
+            List<op_path> opPaths = opPathMapper.getChosePath(lineCode,opBatch.getId());
+            //获取选中的分拣客户信息
+            List<op_cust> opCusts = opCustMapper.getChoseCust(lineCode,opBatch.getId());
+            //获取选中的分拣产品信息
+            List<op_product> opProducts = opProductMapper.getChoseProducts(lineCode,opBatch.getId());
+            //获取选中的分拣订单信息
+            List<op_order> opOrders = opOrderMapper.getChoseOrders(lineCode,opBatch.getId());
 
-        if (opAreas.size() == 0 || opPaths.size() == 0 ||opCusts.size() == 0 ||
-            opProducts.size() == 0 ||opOrders.size() == 0){
-            return ;
-        }
-        Integer qty = opOrders.stream()
-                .mapToInt(op_order::getQty).sum();
-        opBatch.setQty(qty);
-        opBatch.setCustNum(opCusts.size());
-        opBatch.setCustAvgQty((int) (Math.round(qty*1.0) / opBatch.getCustNum()));
-        insertOpData(opBatch,opAreas,opPaths,opCusts,opProducts,opOrders);
+            if (opAreas.size() == 0 || opPaths.size() == 0 ||opCusts.size() == 0 ||
+                    opProducts.size() == 0 ||opOrders.size() == 0){
+                throw new Exception("抽取优化数据失败，原因：优化基础数据为空！");
+            }
+            Integer qty = opOrders.stream()
+                    .mapToInt(op_order::getQty).sum();
+            opBatch.setQty(qty);
+            opBatch.setCustNum(opCusts.size());
+            opBatch.setCustAvgQty((int) (Math.round(qty*1.0) / opBatch.getCustNum()));
+            insertOpData(opBatch,opAreas,opPaths,opCusts,opProducts,opOrders);
     }
 
     @Transactional

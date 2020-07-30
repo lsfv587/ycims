@@ -49,7 +49,7 @@ public class splitOrderServiceImpl implements splitOrderService {
 
     @Transactional
     @Override
-    public void splitOrderOp(Integer lineCode) {
+    public void splitOrderOp(Integer lineCode) throws Exception {
         helper = new splitOrderHelper();
         //获取子线缓存信息
         List<pub_subLine> subLines = pubSubLineMapper.getSubLines(lineCode);

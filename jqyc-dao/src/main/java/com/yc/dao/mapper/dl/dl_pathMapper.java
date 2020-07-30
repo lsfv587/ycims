@@ -16,6 +16,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface dl_pathMapper {
+    List<dl_path> getDlPaths(Integer lineCode);
+    void updateSelectedPath(@Param("list") List<String> list);
     void addList(@Param("list") List<dl_path> list);
     void delete(Integer lineCode);
 }

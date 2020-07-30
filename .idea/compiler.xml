@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jqyc-data-io" />
-        <module name="jqyc-common" />
         <module name="jqyc-dao" />
         <module name="jqyc-web" />
+        <module name="jqyc-vo" />
+        <module name="jqyc-tool" />
         <module name="jqyc-service" />
+        <module name="jqyc-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

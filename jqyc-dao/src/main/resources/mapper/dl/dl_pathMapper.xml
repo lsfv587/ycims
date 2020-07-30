@@ -8,8 +8,24 @@
         <result property="pathSequence" column="pathSequence" />
         <result property="areaCode" column="areaCode" />
         <result property="lineCode" column="lineCode" />
+        <result property="qty" column="qty" />
     </resultMap>
-
+    <select id="getDlPaths" resultMap="rs_map">
+        SELECT p.id,p.pathcode,p.pathname,SUM(o.qty) AS qty
+        FROM dl_order o
+        INNER JOIN dl_path p ON o.pathcode = p.pathcode
+        WHERE p.linecode = #{lineCode}
+        GROUP BY p.id,p.pathcode,p.pathname
+        ORDER BY p.pathsequence
+    </select>
+    <update id="updateSelectedPath" parameterType="List">
+        UPDATE dl_path a JOIN(
+        <foreach collection="list" item="item" separator="union">
+            SELECT #{item} AS id,1 AS issort
+        </foreach>
+        ) b USING(id)
+        SET a.issort = b.issort
+    </update>
     <insert id="addList" parameterType="List">
         insert into dl_path
         (id,pathcode,pathname,pathsequence,areaCode,lineCode)

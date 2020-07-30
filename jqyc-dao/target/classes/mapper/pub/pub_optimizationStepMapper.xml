@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.mapper.pub.pub_optimizationStepMapper">
+    <resultMap id="rs_map" type="com.yc.dao.entity.pub.pub_optimizationStep">
+        <id property="id" column="id"/>
+        <result property="code" column="batchId" />
+        <result property="name" column="lineCode" />
+        <result property="sequence" column="productName" />
+    </resultMap>
+
+    <select id="getOpSteps" resultMap="rs_map">
+        SELECT id,CODE,NAME,sequence
+        FROM pub_optimizationStep
+    </select>
+
+</mapper>

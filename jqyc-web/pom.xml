@@ -10,11 +10,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jqyc-web</artifactId>
-
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除嵌入式tomcat插件 -->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -24,6 +31,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -59,6 +70,21 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--文档-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <dependency>
             <groupId>yc.ims</groupId>
             <artifactId>jqyc-data-io</artifactId>
             <version>1.0</version>
@@ -71,6 +97,11 @@
         <dependency>
             <groupId>yc.ims</groupId>
             <artifactId>jqyc-service</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>yc.ims</groupId>
+            <artifactId>jqyc-vo</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>
@@ -87,6 +118,7 @@
                     <encoding>${project.build.sourceEncoding}</encoding><!-- 字符集编码 -->
                     <!--如果没有这个属性 springBoot 自动配置不会生效-->
                     <fork>true</fork>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>
